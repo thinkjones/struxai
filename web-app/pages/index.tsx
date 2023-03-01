@@ -33,6 +33,7 @@ export default function Home() {
           <Logo>STRUX AI</Logo>
         </Header>
         <Content className="site-layout" style={{ padding: '0 50px' }} >
+          <div>{process.env.NEXT_PUBLIC_USER_POOL_ID}</div>
           <div style={{ padding: 24, minHeight: 380, height: "100vh-150px", background: colorBgContainer }}>
             Upload a document and perform some AI-ML on it.
             <UploadPanel />

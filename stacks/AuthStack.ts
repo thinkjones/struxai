@@ -1,14 +1,14 @@
 import { StackContext, Api } from "sst/constructs";
 import { Cognito } from "sst/constructs";
 
-export function Authstack({ stack }: StackContext) {
+export function AuthStack({ stack }: StackContext) {
   // Create User Pool
   const auth = new Cognito(stack, "auth", {
     login: ["email"],
   });
 
   // Create Api
-  const api = new Api(stack, "Api", {
+  const authApi = new Api(stack, "AuthApi", {
     authorizers: {
       jwt: {
         type: "user_pool",
@@ -22,23 +22,23 @@ export function Authstack({ stack }: StackContext) {
       authorizer: "jwt",
     },
     routes: {
-      "GET /private": "functions/private.main",
+      "GET /private": "packages/functions/src/private.main",
       "GET /public": {
-        function: "functions/public.main",
+        function: "packages/functions/src/public.main",
         authorizer: "none",
       },
     },
   });
 
   // allowing authenticated users to access API
-  auth.attachPermissionsForAuthUsers(stack, [api]);
+  auth.attachPermissionsForAuthUsers(stack, [authApi]);
 
   // Show the API endpoint and other info in the output
   stack.addOutputs({
-    ApiEndpoint: api.url,
+    AuthApiEndpoint: authApi.url,
     UserPoolId: auth.userPoolId,
     UserPoolClientId: auth.userPoolClientId,
   });
 
-  return auth
+  return {authApi, auth}
 }

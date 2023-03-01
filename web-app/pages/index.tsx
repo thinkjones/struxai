@@ -1,3 +1,4 @@
+import UploadPanel from '@/components/UploadPanel';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import Head from 'next/head';
 import styled from 'styled-components'
@@ -7,7 +8,7 @@ const { Header, Footer, Sider, Content } = Layout;
 const Logo = styled.div`
   background: transparent;
   border-radius: 3px;
-  color: palevioletred;
+  color: pink;
   float: left;
   font-size: 25px;
   margin-right: 30px;
@@ -33,7 +34,8 @@ export default function Home() {
         </Header>
         <Content className="site-layout" style={{ padding: '0 50px' }} >
           <div style={{ padding: 24, minHeight: 380, height: "100vh-150px", background: colorBgContainer }}>
-            Content
+            Upload a document and perform some AI-ML on it.
+            <UploadPanel />
           </div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>©2023 Created by Gene Conroy-Jones</Footer>

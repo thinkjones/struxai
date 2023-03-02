@@ -38,6 +38,7 @@ export function AuthStack({ stack }: StackContext) {
     AuthApiEndpoint: authApi.url,
     UserPoolId: auth.userPoolId,
     UserPoolClientId: auth.userPoolClientId,
+    CognitoIdentityPoolId: auth.cognitoIdentityPoolId || ''
   });
 
   return {authApi, auth}

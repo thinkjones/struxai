@@ -108,11 +108,13 @@ export default function Home() {
             <UploadPanel />
           </div>
           <div>
+            <div>NEXT_PUBLIC_COGNITO_IDENTITY_POOL_ID: {process.env.NEXT_PUBLIC_COGNITO_IDENTITY_POOL_ID}</div>            
             <div>NEXT_PUBLIC_USER_POOL_ID: {process.env.NEXT_PUBLIC_USER_POOL_ID}</div>
             <div>NEXT_PUBLIC_USER_POOL_CLIENT_ID: {process.env.NEXT_PUBLIC_USER_POOL_CLIENT_ID}</div>
             <div>NEXT_PUBLIC_AUTH_API_URL: {process.env.NEXT_PUBLIC_AUTH_API_URL}</div>
             <div>NEXT_PUBLIC_REGION: {process.env.NEXT_PUBLIC_REGION}</div>
-
+            <div>NEXT_PUBLIC_UPLOAD_BUCKET: {process.env.NEXT_PUBLIC_UPLOAD_BUCKET}</div>
+            
           </div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>©2023 Created by Gene Conroy-Jones</Footer>

@@ -4,6 +4,7 @@ import { Amplify } from 'aws-amplify'
 
 Amplify.configure({
   Auth: {
+    identityPoolId: process.env.NEXT_PUBLIC_COGNITO_IDENTITY_POOL_ID,
     region: process.env.NEXT_PUBLIC_REGION,
     userPoolId: process.env.NEXT_PUBLIC_USER_POOL_ID,
     userPoolWebClientId: process.env.NEXT_PUBLIC_USER_POOL_CLIENT_ID,
@@ -17,6 +18,10 @@ Amplify.configure({
       },
     ],
   },
+  Storage: {
+    bucket: process.env.NEXT_PUBLIC_UPLOAD_BUCKET,
+    region: process.env.NEXT_PUBLIC_REGION
+}
 });
 
 export default function App({ Component, pageProps }: AppProps) {
